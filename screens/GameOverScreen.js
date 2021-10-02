@@ -1,10 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button, Image } from 'react-native';
+import { View, Text, StyleSheet, Button, Image, Dimensions } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 import MainButton from '../components/MainButton';
 import colors from '../constants/colors';
-
+import {ScreenOrientation} from 'expo';
 const GameOverScreen = props => {
   return (
+    <ScrollView>
     <View style={styles.screen}>
       <Text>The Game is Over!</Text>
       <View style={styles.imageContainer}>
@@ -16,6 +18,7 @@ const GameOverScreen = props => {
       <Text>Number was: {props.userNumber}</Text>
       <MainButton onPress={props.onRestart}>NEW GAME</MainButton>
     </View>
+    </ScrollView>
   );
 };
 
@@ -26,9 +29,9 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   imageContainer:{
-    width:300,
-    height:300,
-    borderRadius:150,
+    width:Dimensions.get('window').width*0.7,
+    height:Dimensions.get('window').width*0.7,
+    borderRadius:Dimensions.get('window').width*0.7/0.5,
     borderWidth:3,
     // sve sto je preko ovog bordera je sakriveno
     overflow:'hidden'
